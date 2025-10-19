@@ -28,23 +28,4 @@ export default {
 
   build: {
     transpile: [],
-    extend(config, { isServer }) {
-      if (isServer) {
-        config.devtool = 'inline-source-map'
-      }
-    }
-  },
-  
-  generate: {
-    fallback: true
-  },
-  
-  hooks: {
-    build: {
-      done(builder) {
-        const { execSync } = require('child_process')
-        execSync('mkdir -p .output/server && cp -r .nuxt/dist/server .output/server/', { stdio: 'inherit' })
-      }
-    }
-  }
 };
